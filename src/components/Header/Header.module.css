@@ -1,0 +1,40 @@
+.Header {
+    background-color: #2874F0;
+    position: fixed;
+    z-index: 1;
+}
+
+.Logo {
+    margin: 0;
+    padding: 10px;
+}
+
+.LogoLink {
+    color: #FFFFF7;
+    font-size: 23px;
+}
+
+.LogoLink:hover {
+    text-decoration: none;
+}
+
+
+
+.Cart {
+    text-align: right;
+    font-size: 18px;
+}
+
+.CartLink {
+    color: #FFFFF7;
+}
+
+.CartLink:hover{
+    text-decoration: none;
+    color: #F5FFFA;
+}
+
+.CartIcon {
+    margin-right: 5px;
+}
+

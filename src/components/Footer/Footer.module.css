@@ -1,0 +1,16 @@
+.Footer {
+    background-color: #172337;
+    height: 60px;
+    width: 100%;
+    color: #FFFFF7;
+    text-align: center;
+    padding: 15px;
+    box-sizing: border-box;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+}
+
+.FooterContent {
+    margin-bottom: 0;
+}

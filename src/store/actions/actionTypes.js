@@ -1,0 +1,10 @@
+export const FETCH_PRODUCTS_LIST = 'FETCH_PRODUCTS_LIST';
+export const SET_PRODUCTS_LIST = 'SET_PRODUCTS_LIST';
+
+export const FETCH_BRANDS = 'FETCH_BRANDS';
+export const SET_BRANDS = 'SET_BRANDS';
+
+export const SORT_PRICE = 'SORT_PRICE';
+export const SET_SORT_PRICE = 'SET_SORT_PRICE';
+// export const REMOVE_FILTER ='REMOVE_FILTER';
+// export const SET_REMOVE_FILTER ='REMOVE_FILTER';
