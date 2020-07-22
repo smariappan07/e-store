@@ -57,29 +57,14 @@ export const setSortPrice = ( sortedArray, status, value ) => {
         sortedProducts: sortedArray,
         sort: status,
         sortValue: value
-
     }
 }
 
-// export const removeFilter = ( status, value, filtStatus, filtValue ) => {
-//     console.log('sorrt-REMO-ACTION');
-//     return {
-//         type: actionTypes.REMOVE_FILTER,
-//         sort: status,
-//         sortValue: value,
-//         filtStatus: filtStatus,
-//         filtValue: filtValue
-//
-//     }
-// }
-
-// export const setRemoveFilter = ( sortedArray, status, value ) => {
-//     console.log('set-REMO-ACTION');
-//     return {
-//         type: actionTypes.SET_REMOVE_FILTER,
-//         sortedProducts: sortedArray,
-//         sort: status,
-//         sortValue: value
-//
-//     }
-// }
+export const searchProducts = (  status, val ) => {
+    console.log('action-search');
+    return {
+        type: actionTypes.SEARCH_PRODUCTS,
+        searchStatus: status,
+        searchValue: val
+    }
+}

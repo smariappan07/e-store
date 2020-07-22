@@ -5,6 +5,6 @@ export {
     setBrands,
     sortPrice,
     setSortPrice,
-    // removeFilter,
+    searchProducts
     // setRemoveFilter
 } from './productsList';

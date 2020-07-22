@@ -86,31 +86,20 @@ console.log('sort-saga')
 
 }
 
-// export function* removeSortFilterSaga ( action ) {
-//     console.log('sort-saga-REMOVE')
-//     try {
-//         let response = yield axios.get('/mobilesList', {
-//             params: {
-//                 isSortFilter: action.sort,
-//                 sortValue: action.sortValue,
-//                 isBrandFilter: action.filtStatus,
-//                 brandFilterValue: action.filtValue
-//
-//             }
-//         })
-//         let sortedProductsListArray = [];
-//         for ( let key in response.data.data ) {
-//             sortedProductsListArray.push(
-//                 {
-//                     ...response.data.data[key]
-//                 }
-//             );
-//         }
-//         yield put(actions.setRemoveFilter(sortedProductsListArray, action.sort, action.sortValue))
-//     }
-//
-//     catch(error) {
-//         console.log(error);
-//     }
-//
-// }
+export function* searchProductsSaga ( action ) {
+    console.log('se',action.searchStatus);
+    console.log('se',action.searchValue);
+
+    try {
+        let response = yield axios.get('/mobilesList', {
+                params: {
+                    searchFor: action.searchStatus,
+                    searchValue: action.searchValue
+                }
+            }
+        );
+    }
+    catch( error ) {
+        console.log(error);
+    }
+}

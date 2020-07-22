@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import classes from './Home.module.css';
 import Card from '../../components/UI/Card/Card';
 import Input from '../../components/UI/Input/Input';
-import * as actionCreators from '../../store/actions/productsList';
+import * as actionCreators from '../../store/actions/index';
 
 class Home extends Component {
 
@@ -76,12 +76,12 @@ class Home extends Component {
     }
 
     render () {
-        let removeFilter = this.props.sortStatus ?  <button onClick={( a ) => {this.sortHandler( a )}}>Remove Filter</button> : null;
+        let removeFilter = this.props.sortStatus ?  <button onClick={( a ) => {this.sortHandler( a )}}>Clear</button> : null;
         return (
            <React.Fragment>
                <Container className={classes.Content}>
                    <Row>
-                       <Col lg={3} >
+                       <Col sm={12} md={3} lg={3} >
                            <div className={classes.Filter}>
                               <h5>Brands</h5>
                                {this.props.brands.map( brand => (
@@ -93,10 +93,10 @@ class Home extends Component {
                                <Input type="radio" name="sort" value="Low to High" checked={this.props.sortValue === 1} label="Low to High" changed={ ( event ) => { this.sortHandler( event )  } } />
                          </div>
                        </Col>
-                       <Col lg={9} >
+                       <Col sm={12} md={9} lg={9} >
                            <Row>
                                {this.props.products.map(item => (
-                                   <Col lg={4}>
+                                   <Col sm={6} md={6} lg={4}>
 
                                        <Card key={item._id} title={item.title} price={item.price} brand={item.brand} />
                                    </Col>

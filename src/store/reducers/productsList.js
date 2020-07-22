@@ -8,7 +8,9 @@ const initialState = {
    isBrandFilterSelected: false,
    isBrandFilterSelectedValue: [],
    isSortFilter: false,
-   isSortFilterValue: null
+   isSortFilterValue: null,
+    isSearchFilter: true,
+    isSearchFilterValue: []
 
 }
 
