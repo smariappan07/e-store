@@ -1,7 +1,16 @@
 .Label {
     text-transform: capitalize;
+    margin-left: 7px;
 }
 
 .Checkbox {
     margin-right: 7px;
 }
+
+.Input {
+    padding: 10px;
+    margin: 5px;
+    box-sizing: border-box;
+
+}
+

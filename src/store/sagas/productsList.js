@@ -97,9 +97,41 @@ export function* searchProductsSaga ( action ) {
                     searchValue: action.searchValue
                 }
             }
-        );
+        )
+        let searchProducts = [];
+        for ( let key in response.data.data  ){
+            searchProducts.push({
+                ...response.data.data[key]
+            });
+        }
+        yield put(actions.setSearchProducts(searchProducts, action.searchValue))
+
     }
+
+
     catch( error ) {
         console.log(error);
     }
+}
+
+export function* submitDataSaga (  action ) {
+    console.log('saga', action.formData);
+
+
+    try{
+
+
+        let response = yield axios.post('/addItems', {
+                brand: action.formData.brand,
+                title: action.formData.model,
+                price: action.formData.price
+            }
+        )
+        yield put(actions.setSubmitData(response.data.status))
+    }
+    catch(error){
+        console.log(error);
+        // yield put setSubmitData(error)
+    }
+
 }

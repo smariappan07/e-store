@@ -13,14 +13,21 @@ class Header extends Component {
 
 
     searchHandler = (event) => {
-        // alert('search');
-
         let searchStatus = this.props.searchStatus;
-        let searchValue = this.props.searchValue ;
-        let searchValue = this.props.searchValue ;
+        let searchValue = event.target.value;
+
         console.log(searchStatus);
-        console.log(searchValue)
-        this.props.onSearch(searchStatus, searchValue)
+        console.log(searchValue);
+
+        this.props.onSearch(searchStatus, searchValue )
+    }
+
+    enterHandler = ( event ) => {
+        if(event.key === 'Enter') {
+            let searchStatus = this.props.searchStatus;
+            let searchValue = event.target.value ;
+            this.props.onSearch(searchStatus, searchValue)
+        }
     }
 
     render() {
@@ -28,13 +35,17 @@ class Header extends Component {
         return (
             <Container fluid className={classes.Header}>
                 <Row className={classes.Logo}>
-                    <Col>
+                    <Col lg={3} md={3} sm={3}>
                         <a href="/" className={classes.LogoLink}>E-Shop</a>
                     </Col>
-                    <Col>
-                         <Input type="search"  changed={(event) => { this.searchHandler(event)}} />
+                    <Col lg={6} md={6} sm={4}>
+                         <Input type="search"  changed={(event) => { this.searchHandler(event)}}
+                                enter={(event) => {this.enterHandler( event )} }  />
+                        <span><i
+                            className="material-icons" style={{fontSize: '17px',position: 'fixed',top: '18px',left: '40%'}}>search</i></span>
+
                     </Col>
-                    <Col className={classes.Cart}>
+                    <Col lg={3} md={3} sm={3} className={classes.Cart}>
                         <a href="#" className={classes.CartLink}><span className={classes.CartIcon}><i
                             className="material-icons" style={{fontSize: '17px'}}>shopping_cart</i></span>Cart</a>
                     </Col>
@@ -47,7 +58,9 @@ class Header extends Component {
 const mapStateToProps = state => {
     return {
         searchStatus: state.isSearchFilter,
-        searchValue: state.isSearchFilterValue
+        searchValue: state.isSearchFilterValue,
+        filterStatus: state.isBrandFilterSelected,
+        filterValue: state.isBrandFilterSelectedValue,
     }
 }
 

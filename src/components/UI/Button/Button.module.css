@@ -1,0 +1,28 @@
+.Button {
+    background-color: transparent;
+    border: none;
+    color: black;
+    padding: 10px;
+}
+
+.Add {
+    background-color: #2874F0;
+    color: #FEFEFF;
+}
+
+.Confirm {
+    background-color: #218838;
+    color: #FEFEFF;
+    margin: 5px;
+}
+
+.Cancel {
+    background-color: #DC3545;
+    color: #FEFEFF;
+    margin: 5px;
+}
+
+.Clear {
+    background-color: #E2E6EA;
+    color: #212121;
+}

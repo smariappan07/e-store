@@ -5,6 +5,8 @@ export {
     setBrands,
     sortPrice,
     setSortPrice,
-    searchProducts
-    // setRemoveFilter
+    searchProducts,
+    setSearchProducts,
+    submitData,
+    setSubmitData
 } from './productsList';

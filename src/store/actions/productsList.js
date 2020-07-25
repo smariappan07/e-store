@@ -68,3 +68,28 @@ export const searchProducts = (  status, val ) => {
         searchValue: val
     }
 }
+
+export const setSearchProducts = ( searchArray, val ) => {
+    console.log('set-p');
+    return {
+        type: actionTypes.SET_SEARCH_PRODUCTS,
+        searchProducts: searchArray,
+        searchValue: val,
+    }
+}
+
+export const submitData = ( val ) => {
+
+    return {
+        type: actionTypes.SUBMIT_DATA,
+        formData: val
+    }
+}
+
+export const setSubmitData = ( val ) => {
+
+    return {
+        type: actionTypes.SET_SUBMIT_DATA,
+        status: val
+    }
+}

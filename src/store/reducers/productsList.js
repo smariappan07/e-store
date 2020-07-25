@@ -10,7 +10,9 @@ const initialState = {
    isSortFilter: false,
    isSortFilterValue: null,
     isSearchFilter: true,
-    isSearchFilterValue: []
+    isSearchFilterValue: null,
+    isModal: true,
+    status: null
 
 }
 
@@ -32,14 +34,7 @@ const sortProductsList = ( state, action ) => {
     })
 }
 
-// const removeSortProductsList = ( state, action ) => {
-//     console.log('reducer-rem-sort')
-//     return updateObject(state, {
-//         productsList: action.sortedProducts,
-//         isSortFilter: action.sort,
-//         isSortFilterValue: action.sortValue
-//     })
-// }
+
 
 const setBrands = ( state, action ) => {
     console.log('set brands',action.brands)
@@ -47,13 +42,27 @@ const setBrands = ( state, action ) => {
         brands: action.brands
     })
 }
+const setSearchProducts = ( state, action ) => {
+    console.log('set search',action.brands)
+    return updateObject(state, {
+        productsList: action.searchProducts,
+        isSearchFilterValue: action.searchValue
+    })
+}
+const setSubmitData = ( state, action ) => {
+console.log(action.status,'+++++')
+    return updateObject(state, {
+        status: action.status
 
+    })
+}
 const reducer = ( state = initialState, action ) => {
     switch (action.type) {
         case actionTypes.SET_PRODUCTS_LIST: return setProductsList( state, action );
         case actionTypes.SET_BRANDS: return setBrands( state, action );
         case actionTypes.SET_SORT_PRICE: return sortProductsList( state, action );
-        // case actionTypes.SET_REMOVE_FILTER: return removeSortProductsList( state, action );
+        case actionTypes.SET_SEARCH_PRODUCTS: return setSearchProducts( state, action );
+        case actionTypes.SET_SUBMIT_DATA: return setSubmitData( state, action );
         default:
             return state;
     }

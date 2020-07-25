@@ -8,5 +8,9 @@ export const SORT_PRICE = 'SORT_PRICE';
 export const SET_SORT_PRICE = 'SET_SORT_PRICE';
 
 export const SEARCH_PRODUCTS = 'SEARCH_PRODUCTS';
+export const SET_SEARCH_PRODUCTS = 'SET_SEARCH_PRODUCTS';
+
+export const SUBMIT_DATA = 'SUBMIT_DATA';
+export const SET_SUBMIT_DATA = 'SET_SUBMIT_DATA';
 // export const REMOVE_FILTER ='REMOVE_FILTER';
 // export const SET_REMOVE_FILTER ='REMOVE_FILTER';

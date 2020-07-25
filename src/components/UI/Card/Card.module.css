@@ -16,6 +16,10 @@
     box-shadow: -1px 2px 40px -7px rgba(201,201,201,1);
 }
 
+.CardContent {
+    text-transform: capitalize;
+}
+
 .Image {
     width: 100%;
     margin-bottom: 10px;
