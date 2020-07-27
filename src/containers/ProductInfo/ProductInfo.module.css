@@ -1,0 +1,19 @@
+.Content {
+    padding: 20px;
+    position: relative;
+    top: 70px;
+}
+
+.Preview {
+    border: 1px solid #ddd;
+    margin-top: 5px;
+    border-radius: 5px;
+}
+
+.ProductImg{
+    border-right: 1px solid #ddd;
+    padding: 20px;
+}
+.ProductInfo {
+    padding: 20px;
+}

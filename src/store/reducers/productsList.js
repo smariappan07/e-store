@@ -12,7 +12,8 @@ const initialState = {
     isSearchFilter: true,
     isSearchFilterValue: null,
     isModal: true,
-    status: null
+    status: null,
+    productsSpec: []
 
 }
 
@@ -56,6 +57,16 @@ console.log(action.status,'+++++')
 
     })
 }
+
+const setProductsSpec = ( state, action ) => {
+    console.log(action.prodSpec,'ss')
+    return updateObject(state, {
+        productsSpec: action.prodSpec
+    })
+}
+
+
+
 const reducer = ( state = initialState, action ) => {
     switch (action.type) {
         case actionTypes.SET_PRODUCTS_LIST: return setProductsList( state, action );
@@ -63,6 +74,7 @@ const reducer = ( state = initialState, action ) => {
         case actionTypes.SET_SORT_PRICE: return sortProductsList( state, action );
         case actionTypes.SET_SEARCH_PRODUCTS: return setSearchProducts( state, action );
         case actionTypes.SET_SUBMIT_DATA: return setSubmitData( state, action );
+        case actionTypes.SET_PRODUCTS_SPEC: return setProductsSpec( state, action );
         default:
             return state;
     }

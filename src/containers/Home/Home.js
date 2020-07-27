@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import { connect } from 'react-redux';
+import { Route } from 'react-router-dom';
 
 
 import classes from './Home.module.css';
@@ -41,8 +42,11 @@ state = {
         console.log('mount', this.props.filterValue);
     }
 
-    cardClickedHandler = (eventt, id) => {
-      this.props.history.push('/spec')
+    cardClickedHandler = (event, id) => {
+      // alert(id);
+        let val = id;
+      this.props.onProductsSpec(id);
+      this.props.history.push(`/spec`);
     }
 
     filterCheckedHandler = ( event ) => {
@@ -228,7 +232,7 @@ state = {
                                {this.props.products.map(item => (
                                    <Col sm={6} md={6} lg={4}>
 
-                                       <Card key={item._id} title={item.title} price={item.price} brand={item.brand} clicked={(event ) => {this.cardClickedHandler(item._id)}} />
+                                       <Card key={item._id} title={item.title} price={item.price} brand={item.brand} clicked={(event) => {this.cardClickedHandler(event, item._id)}} />
                                    </Col>
                                ))}
                            </Row>
@@ -258,7 +262,8 @@ const mapDispatchToProps = dispatch => {
         onFetchProducts: (status, value, sortSts, sortVal ) => dispatch(actionCreators.fetchProductsList( status, value, sortSts, sortVal)),
         onFetchBrands: () => dispatch(actionCreators.fetchBrands()),
         onSortProducts: ( status, value, filtStatus, filtValue ) => dispatch(actionCreators.sortPrice(status, value, filtStatus, filtValue)),
-        onSubmitData : ( val ) => dispatch(actionCreators.submitData( val ))
+        onSubmitData : ( val ) => dispatch(actionCreators.submitData( val )),
+        onProductsSpec: (id) => dispatch(actionCreators.productsSpec(id))
         // onRemoveFilter: ( status,value,filtStatus, filtValue ) => dispatch(actionCreators.removeFilter(status, value, filtStatus, filtValue))
     }
 }

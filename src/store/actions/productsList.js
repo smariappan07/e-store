@@ -93,3 +93,19 @@ export const setSubmitData = ( val ) => {
         status: val
     }
 }
+
+export const productsSpec = ( id ) => {
+    console.log('action-spec')
+    return {
+        type: actionTypes.PRODUCTS_SPEC,
+        id: id
+    }
+}
+
+export const setProductsSpec = ( arr ) => {
+    console.log('action-spec-set')
+    return {
+        type: actionTypes.SET_PRODUCTS_SPEC,
+        prodSpec: arr
+    }
+}

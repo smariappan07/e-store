@@ -8,5 +8,7 @@ export {
     searchProducts,
     setSearchProducts,
     submitData,
-    setSubmitData
+    setSubmitData,
+    productsSpec,
+    setProductsSpec,
 } from './productsList';

@@ -1,7 +1,7 @@
 import { takeEvery } from 'redux-saga/effects';
 
 // import * as actionTypes from '../actions/actionTypes';
-import { fetchProductsListSaga, fetchBrandsSaga, sortPriceSaga, searchProductsSaga, submitDataSaga } from './productsList';
+import { fetchProductsListSaga, fetchBrandsSaga, sortPriceSaga, searchProductsSaga, submitDataSaga, productsSpecSaga } from './productsList';
 
 export function* watchProducts () {
 
@@ -10,5 +10,6 @@ export function* watchProducts () {
     yield takeEvery('SORT_PRICE', sortPriceSaga);
     yield takeEvery('SEARCH_PRODUCTS', searchProductsSaga);
     yield takeEvery('SUBMIT_DATA', submitDataSaga);
+    yield takeEvery('PRODUCTS_SPEC', productsSpecSaga);
 
 }

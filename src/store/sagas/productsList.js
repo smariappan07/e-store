@@ -116,11 +116,7 @@ export function* searchProductsSaga ( action ) {
 
 export function* submitDataSaga (  action ) {
     console.log('saga', action.formData);
-
-
     try{
-
-
         let response = yield axios.post('/addItems', {
                 brand: action.formData.brand,
                 title: action.formData.model,
@@ -134,4 +130,26 @@ export function* submitDataSaga (  action ) {
         // yield put setSubmitData(error)
     }
 
+}
+
+export function* productsSpecSaga ( action ) {
+    console.log('spec-saga')
+    try {
+        let response = yield axios.get('/mobilesList', {
+            params: {
+                mobileId: action.id
+            }
+        })
+
+        let prodSpecArray = [];
+        for(let key in response.data.data) {
+            prodSpecArray.push({
+                ...response.data.data[key]
+            })
+        }
+        yield put(actions.setProductsSpec(prodSpecArray))
+    }
+    catch(error) {
+        console.log(error);
+    }
 }
