@@ -6,12 +6,14 @@ import Home from './containers/Home/Home';
 import Spec from './containers/ProductInfo/ProductInfo';
 
 class App extends Component {
-
+    // componentDidMount(){
+    //   console.log(this.props.match)
+    // }
   render () {
       let routes = (
           <Switch>
               <Route path="/mobiles"  component={Home} />
-              <Route path="/spec"  component={Spec} />
+              <Route path="/model/:id"  component={Spec} />
               <Redirect to="/mobiles" />
           </Switch>
       );

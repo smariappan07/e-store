@@ -46,7 +46,7 @@ state = {
       // alert(id);
         let val = id;
       this.props.onProductsSpec(id);
-      this.props.history.push(`/spec`);
+      this.props.history.push(`/model/${val}`);
     }
 
     filterCheckedHandler = ( event ) => {
