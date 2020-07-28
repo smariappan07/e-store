@@ -7,15 +7,17 @@ const input = props => {
     if(props.type === 'checkbox'){
        inputClass = classes.Checkbox;
     }
-    else if( props.type === 'text'  ){
+    else if( props.type === 'text' ){
         inputClass = classes.Input;
+    }
+    else if(props.type === 'search'){
+        inputClass = classes.InputSearch;
     }
     else {
 
     }
     return (
         <div>
-
             <input type={props.type}
                    checked={props.checked}
                    name={props.name}

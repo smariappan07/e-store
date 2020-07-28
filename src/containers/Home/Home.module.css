@@ -19,3 +19,7 @@
 .ModalTitle {
     margin-left: 4px;
 }
+.Error {
+    color: #ff0033;
+    margin-left: 5px;
+}

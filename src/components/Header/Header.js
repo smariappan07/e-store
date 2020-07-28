@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Container, Row, Col } from 'react-bootstrap';
 
 import Input from '../UI/Input/Input';
+import Button from '../UI/Button/Button';
 
 
 import * as actionCreators from '../../store/actions/index';
@@ -39,11 +40,17 @@ class Header extends Component {
                         <a href="/" className={classes.LogoLink}>E-Shop</a>
                     </Col>
                     <Col lg={6} md={6} sm={4}>
-                         <Input type="search"  changed={(event) => { this.searchHandler(event)}}
+                        <div>
+                         <Input type="search"
+                                placeholder="Search by brands"
+                                changed={(event) => { this.searchHandler(event)}}
                                 enter={(event) => {this.enterHandler( event )} }  />
-                        <span><i
-                            className="material-icons" style={{fontSize: '17px',position: 'fixed',top: '18px',left: '40%'}}>search</i></span>
-
+                        </div>
+                        {/*<div className={classes.Search}>*/}
+                        {/*    <Button>*/}
+                        {/*          <i className="material-icons">search</i>*/}
+                        {/*    </Button>*/}
+                        {/*</div>*/}
                     </Col>
                     <Col lg={3} md={3} sm={3} className={classes.Cart}>
                         <a href="#" className={classes.CartLink}><span className={classes.CartIcon}><i

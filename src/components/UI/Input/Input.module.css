@@ -7,10 +7,18 @@
     margin-right: 7px;
 }
 
-.Input {
-    padding: 10px;
-    margin: 5px;
+.InputSearch {
     box-sizing: border-box;
+    border-radius: 2px;
+    border: 1px solid #ddd;
+    padding: 6px;
+}
 
+.Input {
+    box-sizing: border-box;
+    border-radius: 2px;
+    border: 1px solid #ddd;
+    padding: 6px;
+    margin: 5px;
 }
 

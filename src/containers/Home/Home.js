@@ -17,24 +17,31 @@ class Home extends Component {
 state = {
     isModal: false,
     isAddItems: false,
+    brandVal: '',
+    modelVal: '',
+    priceVal: '',
+    brandEmpty: false,
+    priceEmpty: false,
+    modelEmpty: false
 
-    addForm: {
-        brand: {
-            type: "text",
-            placeholder: "Enter the Brand",
-            value: ''
-        },
-        model: {
-            type: "text",
-            placeholder: "Enter the Model Name",
-            value: ''
-        },
-        price: {
-            type: "text",
-            placeholder: "Enter the  Price",
-            value: ''
-        }
-    }
+
+    // addForm: {
+    //     brand: {
+    //         type: "text",
+    //         placeholder: "Enter the Brand",
+    //         value: ''
+    //     },
+    //     model: {
+    //         type: "text",
+    //         placeholder: "Enter the Model Name",
+    //         value: ''
+    //     },
+    //     price: {
+    //         type: "text",
+    //         placeholder: "Enter the  Price",
+    //         value: ''
+    //     }
+    // }
 }
     componentDidMount () {
         this.props.onFetchProducts(this.props.filterStatus, this.props.filterValue, this.props.sortStatus, this.props.sortValue);
@@ -111,49 +118,65 @@ state = {
         this.setState({isModal: true})
     }
 
-    cancelItemHandler = (e) => {
+    inputChangedHandler = ( event, type ) => {
+        let val = null;
+        if (type === 'brand') {
+            val = event.target.value;
+            if(val === '') {
+                this.setState({brandEmpty: true, brandVal: val})
+            }
+            else {
+                this.setState({brandEmpty: false, brandVal: val});
+            }
+
+        } else if (type === 'model') {
+            val = event.target.value;
+            if(val === '') {
+                this.setState({modelEmpty: true, modelVal: val})
+            }
+            else {
+                this.setState({modelEmpty: false, modelVal: val});
+            }
+        }
+        else {
+            val = event.target.value;
+            if(val === '') {
+                this.setState({priceEmpty: true, priceVal: val})
+            }
+            else {
+                this.setState({priceEmpty: false, priceVal: val});
+            }
+        }
+    }
+
+    submitDataHandler = (e) => {
         e.preventDefault();
-        this.setState({isModal: false, isAddItems: false});
+        let brand = this.state.brandVal;
+        let model = this.state.modelVal;
+        let price = this.state.priceVal;
 
+        if(brand === ''){
+            this.setState({brandEmpty: true});
+        }
+        else if(model === ''){
+            this.setState({modelEmpty: true});
+        }
+        else if ( price === '' ) {
+            this.setState({priceEmpty: true});
+        }
+        else if( brand !== '' && model !== '' && price !== ''  ) {
+            this.props.onSubmitData(brand, model, price);
+            this.setState({isModal: false,isAddItems: true,  brandVal: '', modelVal: '', priceVal: ''});
+        }
+        else {
 
+        }
     }
 
-    inputChangedHandler = ( event, id ) => {
-
-
-
-    const updatedAddFormElement = {
-            ...this.state.addForm[id],
-            value: event.target.value,
-
-
-        }
-
-        const updatedAddForm = {
-            ...this.state.addForm,
-            [id]: updatedAddFormElement
-        }
-        updatedAddForm[id] = updatedAddFormElement;
-
-
-        this.setState({addForm: updatedAddForm});
+    cancelItemHandler = (e) => {
+            e.preventDefault();
+            this.setState({isModal: false, isAddItems: false});
     }
-
-    submitDataHandler = (event) => {
-        event.preventDefault();
-
-        const formData = {};
-        for ( let key in this.state.addForm ) {
-            formData[key] = this.state.addForm[key].value;
-        }
-        this.props.onSubmitData(formData);
-
-
-        console.log(formData);
-
-        this.setState({isModal: false, isAddItems: true});
-
-}
 
     render () {
 
@@ -173,27 +196,62 @@ state = {
         msg = <p>{this.props.submitStatus}</p>
     }
 
-
-       let form = (
-            <form onSubmit={this.submitDataHandler}>
-                <h4 className={classes.ModalTitle}>Add Items</h4>
-                {addFormArray.map(elem => (
-                    <Input key={elem.id}
-                           type={elem.config.type}
-                           placeholder={elem.config.placeholder}
-                           changed={(event) => {
-                               this.inputChangedHandler(event, elem.id)
-                           }}
-                           value={elem.config.value}
-
+    let form = (
+        <form>
+            <h5>Add Mobiles</h5>
+                <div>
+                    <Input type="text"
+                           placeholder="Enter Brand name"
+                           changed={(event, type) => {this.inputChangedHandler(event,'brand')}}
+                           value={this.state.brandVal}
                     />
-                ))}
-
-                <Button btnType="Confirm" >Confirm</Button>
-                <Button btnType="Cancel" clicked={this.cancelItemHandler}>Cancel</Button>
+                    {this.state.brandEmpty ? <p className={classes.Error}>Fill the Brand Name</p> : null}
+                </div>
+                <div>
+                    <Input type="text"
+                           placeholder="Enter Model name"
+                           changed={(event, type) => {this.inputChangedHandler(event, 'model')}}
+                           value={this.state.modelVal}
+                    />
+                    {this.state.modelEmpty ? <p className={classes.Error}>Fill the Model name</p> : null}
+                </div>
+                <div>
+                    <Input type="text"
+                           placeholder="Enter Price"
+                           changed={(event, type) => {this.inputChangedHandler(event, 'price')}}
+                           value={this.state.priceVal}
+                    />
+                    {this.state.priceEmpty ? <p className={classes.Error}>Fill the Price</p> : null}
+                </div>
+                <Button btnType="Confirm" clicked={(event) => {this.submitDataHandler(event)}} >Add</Button>
+                <Button btnType="Cancel" clicked={(event) => {this.cancelItemHandler(event)}}>Cancel</Button>
             </form>
 
-        )
+    );
+
+
+
+
+       // let form = (
+       //      <form onSubmit={this.submitDataHandler}>
+       //          <h4 className={classes.ModalTitle}>Add Items</h4>
+       //          {addFormArray.map(elem => (
+       //              <Input key={elem.id}
+       //                     type={elem.config.type}
+       //                     placeholder={elem.config.placeholder}
+       //                     changed={(event) => {
+       //                         this.inputChangedHandler(event, elem.id)
+       //                     }}
+       //                     value={elem.config.value}
+       //
+       //              />
+       //          ))}
+
+        //         <Button btnType="Confirm" >Confirm</Button>
+        //         <Button btnType="Cancel" clicked={this.cancelItemHandler}>Cancel</Button>
+        //     </form>
+        //
+        // )
 
 
     let removeFilter = this.props.sortStatus ?  <Button btnType="Clear" clicked={( a ) => {this.sortHandler( a )}}>Clear</Button> : null;
@@ -244,6 +302,10 @@ state = {
     }
 }
 
+
+
+
+
 const mapStateToProps = state => {
     return {
        products: state.productsList,
@@ -262,7 +324,7 @@ const mapDispatchToProps = dispatch => {
         onFetchProducts: (status, value, sortSts, sortVal ) => dispatch(actionCreators.fetchProductsList( status, value, sortSts, sortVal)),
         onFetchBrands: () => dispatch(actionCreators.fetchBrands()),
         onSortProducts: ( status, value, filtStatus, filtValue ) => dispatch(actionCreators.sortPrice(status, value, filtStatus, filtValue)),
-        onSubmitData : ( val ) => dispatch(actionCreators.submitData( val )),
+        onSubmitData : ( brand, model, price ) => dispatch(actionCreators.submitData( brand, model, price )),
         onProductsSpec: (id) => dispatch(actionCreators.productsSpec(id))
         // onRemoveFilter: ( status,value,filtStatus, filtValue ) => dispatch(actionCreators.removeFilter(status, value, filtStatus, filtValue))
     }

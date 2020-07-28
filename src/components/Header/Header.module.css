@@ -2,6 +2,12 @@
     background-color: #2874F0;
     position: fixed;
     z-index: 1;
+    box-sizing: border-box;
+
+}
+
+.Search {
+    display: inline-block;
 }
 
 .Logo {

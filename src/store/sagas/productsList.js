@@ -115,12 +115,11 @@ export function* searchProductsSaga ( action ) {
 }
 
 export function* submitDataSaga (  action ) {
-    console.log('saga', action.formData);
     try{
         let response = yield axios.post('/addItems', {
-                brand: action.formData.brand,
-                title: action.formData.model,
-                price: action.formData.price
+                brand: action.brand,
+                title: action.model,
+                price: action.price
             }
         )
         yield put(actions.setSubmitData(response.data.status))

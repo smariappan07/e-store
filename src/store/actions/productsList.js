@@ -78,11 +78,15 @@ export const setSearchProducts = ( searchArray, val ) => {
     }
 }
 
-export const submitData = ( val ) => {
-
+export const submitData = ( brand, model, price ) => {
+    console.log('1',brand);
+    console.log('2',model);
+    console.log('3',price);
     return {
         type: actionTypes.SUBMIT_DATA,
-        formData: val
+        brand: brand,
+        model: model,
+        price: price
     }
 }
 
